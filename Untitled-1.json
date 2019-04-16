@@ -1,0 +1,159 @@
+{
+  "expand": "names,schema",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 1,
+  "issues": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "10004",
+      "self": "https://playteddy.atlassian.net/rest/api/2/issue/10004",
+      "key": "FJB-1",
+      "fields": {
+        "statuscategorychangedate": null,
+        "issuetype": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "Stories track functionality or features expressed as user goals.",
+          "iconUrl": "https://playteddy.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315
+        },
+        "timespent": null,
+        "project": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/project/10001",
+          "id": "10001",
+          "key": "FJB",
+          "name": "fetch_jira_bot",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://playteddy.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://playteddy.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://playteddy.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://playteddy.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+          }
+        },
+        "fixVersions": [],
+        "aggregatetimespent": null,
+        "resolution": null,
+        "customfield_10027": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "watches": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/issue/FJB-1/watchers",
+          "watchCount": 1,
+          "isWatching": true
+        },
+        "lastViewed": "2019-04-15T19:00:47.699+0530",
+        "created": "2019-04-15T17:39:15.580+0530",
+        "customfield_10020": null,
+        "customfield_10021": null,
+        "customfield_10022": "0|i0000v:",
+        "priority": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://playteddy.atlassian.net/images/icons/priorities/medium.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "customfield_10025": null,
+        "labels": [],
+        "customfield_10026": null,
+        "customfield_10016": null,
+        "customfield_10017": null,
+        "customfield_10018": {
+          "hasEpicLinkFieldDependency": false,
+          "showField": false,
+          "nonEditableReason": {
+            "reason": "PLUGIN_LICENSE_ERROR",
+            "message": "Portfolio for Jira must be licensed for the Parent Link to be available."
+          }
+        },
+        "customfield_10019": null,
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": null,
+        "updated": "2019-04-15T18:05:33.508+0530",
+        "status": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/status/3",
+          "description": "This issue is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://playteddy.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://playteddy.atlassian.net/rest/api/2/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "customfield_10010": null,
+        "customfield_10014": null,
+        "customfield_10015": null,
+        "customfield_10005": null,
+        "customfield_10006": null,
+        "customfield_10007": null,
+        "security": null,
+        "customfield_10008": null,
+        "aggregatetimeestimate": null,
+        "customfield_10009": null,
+        "summary": "kdcndksjncdskjcnds",
+        "creator": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/user?accountId=5cb446ab5b29f211a322e56f",
+          "name": "admin",
+          "key": "admin",
+          "accountId": "5cb446ab5b29f211a322e56f",
+          "emailAddress": "playteddystore@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "play teddy",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/user?accountId=5cb446ab5b29f211a322e56f",
+          "name": "admin",
+          "key": "admin",
+          "accountId": "5cb446ab5b29f211a322e56f",
+          "emailAddress": "playteddystore@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/84082a6913f37aee86f575ad947aa4dd?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F84082a6913f37aee86f575ad947aa4dd%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "play teddy",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "customfield_10000": "{}",
+        "aggregateprogress": { "progress": 0, "total": 0 },
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10003": null,
+        "customfield_10004": null,
+        "environment": null,
+        "duedate": null,
+        "progress": { "progress": 0, "total": 0 },
+        "votes": {
+          "self": "https://playteddy.atlassian.net/rest/api/2/issue/FJB-1/votes",
+          "votes": 0,
+          "hasVoted": false
+        }
+      }
+    }
+  ]
+}
