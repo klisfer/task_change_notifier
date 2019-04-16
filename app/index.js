@@ -10,6 +10,7 @@ const { flatMap } = require("rxjs/operators");
 const axios = require("axios");
 const { merge } = require("rxjs");
 const moment = require("moment");
+const _ = require("lodash");
 
 dotenv.config();
 //token to connect to the bot
@@ -25,14 +26,13 @@ const endpoint =
 const credentials =
   process.env.JIRA_USERNAME + ":" + process.env.JIRA_API_TOKEN;
 const credsBase64 = Buffer.from(credentials).toString("base64");
-var trackIssueId = "";
 const headers = {
   Authorization: "Basic " + credsBase64,
   "Content-Type": "application/json"
 };
-var current_task = null;
+var tasksToTrack = [];
 const currentUser = { name: "", peer: "" };
-var refreshIntervalId = "";
+
 const bot = new Bot.default({
   token,
   endpoints: [endpoint]
@@ -57,7 +57,7 @@ const self = bot
 
 bot.updateSubject.subscribe({
   next(update) {
-    console.log(JSON.stringify({ update }, null, 2));
+    // console.log(JSON.stringify({ update }, null, 2));
   }
 });
 
@@ -65,46 +65,57 @@ bot.updateSubject.subscribe({
 const messagesHandle = bot.subscribeToMessages().pipe(
   flatMap(async message => {
     const wordsArray = message.content.text.split(" ");
+    console.log("MESSAGE", wordsArray);
 
     if (wordsArray[0] === "Remind" && wordsArray[1] === "about") {
-      trackIssueId = wordsArray[2];
-      let urls = process.env.JIRA_URL + trackIssueId;
-      clearInterval(refreshIntervalId);
-      refreshIntervalId = setInterval(async function() {
-        let result = await axios({
-          url: urls,
-          method: "get",
-          headers: headers
+      let result = await axios({
+        url: process.env.JIRA_ISSUE_URL + wordsArray[2],
+        method: "get",
+        headers: headers
+      })
+        .then(response => {
+          const issue = {
+            task: response.data.key,
+            status: response.data.fields.status.name
+          };
+          tasksToTrack.push(issue);
         })
-          .then(response => {
-            response.data.issues.map(issue => {
-              if (current_task === null) {
-                current_task = issue;
-                const task = formatJiraText(issue);
-                sendTextMessage(task);
-              } else if (
-                current_task.fields.status.name !== issue.fields.status.name
-              ) {
-                current_task = issue;
-                const task = formatJiraText(issue);
-                sendTextMessage(task);
+        .catch(err => {
+          console.log(err);
+        });
+    } else if (wordsArray[0] === "Stop" && wordsArray[1] === "reminding") {
+      console.log("logs", containsValue(tasksToTrack, wordsArray[2]));
+      if (containsValue(tasksToTrack, wordsArray[2])) {
+        _.remove(tasksToTrack, function(n) {
+          console.log("nnnnn", n, wordsArray[2]);
+          return n.task === wordsArray[2];
+        });
+        console.log("remaining", tasksToTrack);
+      }
+    }
+
+    setInterval(async function() {
+      let result = await axios({
+        url: process.env.ALL_ISSUE_JIRA_URL,
+        method: "get",
+        headers: headers
+      }).then(response => {
+        response.data.issues.map(issue => {
+          if (
+            containsValue(tasksToTrack, issue.key) &&
+            issue.fields.status.name !== issueStatus(issue.key)
+          ) {
+            tasksToTrack.map(task => {
+              if (task.task === issue.key) {
+                task.status = issue.fields.status.name;
               }
             });
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      }, 3000);
-    } else if (
-      wordsArray[0] === "Stop" &&
-      wordsArray[1] === "reminding" &&
-      wordsArray[2] === trackIssueId
-    ) {
-      sendTextMessage("reminder stopped");
-      clearInterval(refreshIntervalId);
-      trackIssueId = "";
-      current_task = null;
-    }
+            const task = formatJiraText(issue);
+            sendTextMessage(task);
+          }
+        });
+      });
+    }, 3000);
   })
 );
 
@@ -204,4 +215,24 @@ async function getCurrentUser(bot, peer) {
   const user = await bot.getUser(peer.id);
   currentUser.name = user.name;
   currentUser.peer = peer;
+}
+
+function containsValue(array, value) {
+  valuePresent = false;
+  array.map(object => {
+    if (object.task === value) {
+      valuePresent = true;
+    }
+  });
+  return valuePresent;
+}
+
+function issueStatus(key) {
+  var status = "";
+  tasksToTrack.map(taskTracked => {
+    if (taskTracked.task === key) {
+      status = taskTracked.status;
+    }
+  });
+  return status;
 }
